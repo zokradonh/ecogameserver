@@ -1,7 +1,7 @@
 Docker ECO Game Server
 =============
 
-A docker image for the ECO game.
+A docker image for the ECO game. (http://www.strangeloopgames.com/eco/)
 
 To start server
 
@@ -21,9 +21,9 @@ this populates your `/yourconfig` volume with default config files. Then you can
 
 
 
-docker-compose.yml
+Docker Compose
 ========
-
+Create file `docker-compose.yml` with the following contents:
 ```
 version: '3'
 
@@ -38,3 +38,18 @@ services:
       - ./data/Configs:/app/Configs
       - ./data/Storage:/app/Storage
 ```
+Run in the same directory
+```
+docker-compose up -d
+```
+To update game server type:
+```
+docker-compose stop && docker-compose up --pull -d
+```
+This stops the server, pulls the new image from hub.docker.com, removes the old container and creates a new container with updated version.
+
+
+Planned features
+==========
+- change config files via environment variables
+- automated trigger of hub.docker.com build on new ECO release
