@@ -7,4 +7,5 @@ cp -n /app/DefaultConfigs/* /app/Configs/
 #for envar in ${!ECO_*}
 
 # start server
+cd /app
 exec mono /app/EcoServer.exe -nogui
