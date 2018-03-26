@@ -28,5 +28,5 @@ COPY bootstrap.sh generate_config.sh /app/
 
 RUN chmod +x /app/bootstrap.sh /app/generate_config.sh
 
-CMD ["./bootstrap.sh"]
+CMD ["/app/bootstrap.sh"]
 
