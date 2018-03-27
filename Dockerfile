@@ -16,7 +16,7 @@ RUN apt-get update && \
 # get downloaded server archive. yes, copy to root dir to save a build layer
 COPY --from=awshelper /EcoServer.zip /EcoServer.zip
 
-# unzip and save default configs files
+# unzip and save default config files
 RUN mkdir -p /app/ /app/DefaultConfigs && \
     unzip -q /EcoServer.zip -d /app/ && \
     rm /EcoServer.zip && \

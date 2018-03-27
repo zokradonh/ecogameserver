@@ -4,7 +4,6 @@ Docker ECO Game Server
 A docker image for the ECO game. (http://www.strangeloopgames.com/eco/)
 
 To start server
-
 ```
 docker run -d -p 2999:2999/udp -p 3000-3001:3000-3001 -v /yourconfig:/app/Configs -v /yourworldstorage:/app/Storage zokradonh/ecogameserver
 ```
@@ -38,13 +37,13 @@ services:
       - ./data/Configs:/app/Configs
       - ./data/Storage:/app/Storage
 ```
-Run in the same directory
+To start server run in the same directory:
 ```
 docker-compose up -d
 ```
 To update game server type:
 ```
-docker-compose stop && docker-compose up --pull -d
+docker-compose stop && docker-compose pull && docker-compose up -d
 ```
 This stops the server, pulls the new image from hub.docker.com, removes the old container and creates a new container with updated version.
 
