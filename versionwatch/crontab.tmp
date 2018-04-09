@@ -1,0 +1,1 @@
+0 */1 * * * /versionwatch/check_and_trigger.sh > /dev/stdout

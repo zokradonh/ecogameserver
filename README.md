@@ -4,6 +4,14 @@ Docker ECO Game Server
 A docker image for the ECO game. (http://www.strangeloopgames.com/eco/)
 You need an ECO license to run an ECO server. Your normal client license is enough.
 
+Features
+===========
+- graceful stop: `docker stop` triggers world save.
+- true automated build: watch script on my server that checks new eco version every hour
+
+Usage
+==========
+
 To start server
 ```
 docker run -d -p 2999:2999/udp -p 3000-3001:3000-3001 -v /yourconfig:/app/Configs -v /yourworldstorage:/app/Storage zokradonh/ecogameserver
@@ -49,11 +57,10 @@ To update game server type:
 docker-compose stop && docker-compose pull && docker-compose up -d
 ```
 This stops the server, pulls the new image from hub.docker.com, removes the old container and creates a new container with updated version.
-As long as automatic build triggering is not implemented I need to manually trigger the build on hub.docker.com for a new ECO release. If I am late this command will not bring any new version.
 
 Custom Building
 ========
-If you don't want to rely on me to trigger a new build after new ECO release, you can build your own image with the following docker-compose.yml:
+If you don't want to rely on my hourly script to trigger a new build after new ECO release, you can build your own image with the following docker-compose.yml:
 ```
 version: '3'
 
@@ -76,7 +83,6 @@ docker-compose stop && docker-compose --no-cache build && docker-compose up -d
 This stops the server, builds the new image from scratch, recreates the container and starts it.
 We need to use `--no-cache` since the docker daemon does not know that there is a new ECO release.
 
-Planned features
+Planned Features
 ==========
 - drop all unnecessary container capabilities
-- automated trigger of hub.docker.com build on new ECO release
