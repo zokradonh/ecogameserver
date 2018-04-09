@@ -2,7 +2,7 @@ Docker ECO Game Server
 =============
 
 A docker image for the ECO game. (http://www.strangeloopgames.com/eco/)
-You need an ECO license to run this server.
+You need an ECO license to run an ECO server. Your normal client license is enough.
 
 To start server
 ```
@@ -29,6 +29,7 @@ services:
 
   server:
     image: zokradonh/ecogameserver
+    stop_grace_period: 20s
     ports:
       - 2999:2999/udp
       - 3000-3001:3000-3001
@@ -36,7 +37,8 @@ services:
       - ./yourconfig:/app/Configs
       - ./yourworldstorage:/app/Storage
 ```
-This saves the config and storage folders in the same folder of docker-compose.yml. You can also use absolute paths instead of `./`. 
+This saves the config and storage folders in the same folder of docker-compose.yml. You can also use absolute paths instead of `./`.
+You can adjust the `stop_grace_period` time if your world is very big and needs longer for saving the world.
 
 To start server run in the same directory:
 ```
@@ -59,6 +61,7 @@ services:
 
   server:
     build: https://github.com/ZokRadonh/ecogameserver.git
+    stop_grace_period: 20s
     ports:
       - 2999:2999/udp
       - 3000-3001:3000-3001
@@ -75,6 +78,5 @@ We need to use `--no-cache` since the docker daemon does not know that there is 
 
 Planned features
 ==========
-- graceful stop on docker stop
-- ~~change config files via environment variables~~
+- drop all unnecessary container capabilities
 - automated trigger of hub.docker.com build on new ECO release
