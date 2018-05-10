@@ -6,7 +6,7 @@ cp -n /app/DefaultConfigs/* /app/Configs/
 pipe=$(mktemp -u)
 mkfifo $pipe
 
-#trap "echo \"SIGTERM raised\"" SIGTERM
+# trap the SIGTERM
 trap "printf \"exit\n\" >> $pipe" SIGTERM
 
 # start server

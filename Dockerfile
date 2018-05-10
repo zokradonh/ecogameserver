@@ -8,7 +8,6 @@ FROM mono
 LABEL maintainer=az@zok.xyz \
       version="1.1"
 
-# we also need jq for editing config files via environment variables in bootstrap
 RUN apt-get update && \
     apt-get install -y unzip && \
     rm -rf /var/cache/apt /var/lib/apt/lists
@@ -22,11 +21,10 @@ RUN mkdir -p /app/ /app/DefaultConfigs && \
     rm /EcoServer.zip && \
     cp /app/Configs/* /app/DefaultConfigs/
 
-EXPOSE 2999/udp 3000 3001
+EXPOSE 3000/udp 3001/tcp
 
 COPY bootstrap.sh generate_config.sh /app/
 
 RUN chmod +x /app/bootstrap.sh /app/generate_config.sh
 
 CMD ["/app/bootstrap.sh"]
-
