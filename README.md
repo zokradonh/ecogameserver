@@ -85,10 +85,6 @@ docker-compose stop && docker-compose --no-cache build && docker-compose up -d
 This stops the server, builds the new image from scratch, recreates the container and starts it.
 We need to use `--no-cache` since the docker daemon does not know that there is a new ECO release.
 
-Known Issues
-==========
-- If you press G ingame to open the out of game browser and see the graphs you will be redirected to invalid address.
-
 Planned Features
 ==========
 - drop all unnecessary container capabilities
