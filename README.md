@@ -1,3 +1,5 @@
+[![Docker Pulls](https://img.shields.io/docker/pulls/zokradonh/ecogameserver.svg)](https://hub.docker.com/r/zokradonh/ecogameserver/)
+
 Docker ECO Game Server
 =============
 
