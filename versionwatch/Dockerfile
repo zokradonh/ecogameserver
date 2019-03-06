@@ -7,9 +7,6 @@ COPY crontab.tmp check_and_trigger.sh /versionwatch/
 
 RUN crontab /versionwatch/crontab.tmp
 
-# cache last state
-VOLUME /versionwatch/state
-
 ENTRYPOINT ["/sbin/tini", "--"]
 
 CMD ["/usr/sbin/crond", "-f", "-d", "8"]
