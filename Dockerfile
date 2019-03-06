@@ -27,6 +27,4 @@ EXPOSE 3000/udp 3001/tcp
 
 COPY start.sh generate_config.sh /app/
 
-RUN chmod +x /app/start.sh /app/generate_config.sh
-
 CMD ["/app/start.sh"]
