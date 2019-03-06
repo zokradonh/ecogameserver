@@ -8,7 +8,7 @@ You need an ECO license to run an ECO server. Your normal client license is enou
 
 Features
 ===========
-- graceful stop: `docker stop` triggers world save.
+- graceful stop: `docker stop` triggers world save. (Which is now an integrated ECO feature)
 - true automated build: watch script on my server that checks new eco version every hour
 - missing something? Create a GitHub issue.
 
@@ -32,23 +32,9 @@ You can also use this command in combination with docker compose.
 
 Docker Compose
 ========
-Create file `docker-compose.yml` with the following contents:
-```
-version: '3'
+Create file `docker-compose.yml` like in `docker-compose-example.yml`:
 
-services:
-
-  server:
-    image: zokradonh/ecogameserver
-    stop_grace_period: 20s
-    ports:
-      - 3000:3000/udp
-      - 3001:3001/tcp
-    volumes:
-      - ./yourconfig:/app/Configs
-      - ./yourworldstorage:/app/Storage
-```
-This saves the config and storage folders in the same folder of docker-compose.yml. You can also use absolute paths instead of `./`.
+This saves the config and storage folders in volumes. You can also use absolute host paths instead of `worldsave` or `config`.
 You can adjust the `stop_grace_period` time if your world is very big and needs longer for saving the world. You can see the needed time with `docker-compose logs`.
 
 To start server run in the same directory:
