@@ -4,7 +4,7 @@
 # https://stackoverflow.com/a/4025065
 # https://creativecommons.org/licenses/by-sa/3.0/
 vercomp () {
-    if [[ $1 == $2 ]]
+    if [[ $1 == "$2" ]]
     then
         return 0
     fi
@@ -34,18 +34,18 @@ vercomp () {
     return 0
 }
 
-latestVersion=$( aws --no-sign-request s3 ls eco-releases | grep -E -e EcoServer_v[0-9.]*-beta.zip | sort -n | tail -1 | awk '{print $4}' | sed -r 's#.+_v([0-9.]+).+#\1#' )
+latestVersion=$( aws --no-sign-request s3 ls eco-releases | grep -E -e "EcoServer_v[0-9.]*-beta.zip" | sort -n | tail -1 | awk '{print $4}' | sed -r 's#.+_v([0-9.]+).+#\1#' )
 
 lastKnown=$( cat /versionwatch/state/latest )
 
-vercomp $latestVersion $lastKnown
+vercomp "$latestVersion" "$lastKnown"
 
 if [[ $? == 1 ]]
 then
     # there is a newer version
     # cache version
-    echo $latestVersion > /versionwatch/state/latest
+    echo "$latestVersion" > /versionwatch/state/latest
     echo "Found new version ($latestVersion), triggering new build"
     # trigger build
-    curl -H "Content-Type: application/json" --data '{"build": true}' -X POST https://registry.hub.docker.com/u/zokradonh/ecogameserver/trigger/$TRIGGER_TOKEN/
+    curl -H "Content-Type: application/json" --data '{"build": true}' -X POST "https://registry.hub.docker.com/u/zokradonh/ecogameserver/trigger/$TRIGGER_TOKEN/"
 fi

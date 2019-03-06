@@ -1,10 +1,10 @@
 #!/bin/bash
 
-id=$(docker create $IMAGE_NAME)
+id=$(docker create "$IMAGE_NAME")
 echo "Created container $id from $IMAGE_NAME"
-docker cp $id:/app/VERSION VERSION
+docker cp "$id:/app/VERSION VERSION"
 version=$(cat VERSION)
 echo "Extracted Version $version"
-docker tag $IMAGE_NAME $DOCKER_REPO:$version
-docker push $DOCKER_REPO:$version
-docker rm $id
+docker tag "$IMAGE_NAME" "$DOCKER_REPO:$version"
+docker push "$DOCKER_REPO:$version"
+docker rm "$id"
