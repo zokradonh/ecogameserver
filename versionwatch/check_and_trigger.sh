@@ -52,5 +52,5 @@ then
     echo "$latestVersion" > /versionwatch/state/latest
     echo "Found new version ($latestVersion), triggering new build"
     # trigger build
-    curl -H "Content-Type: application/json" --data '{"build": true}' -X POST "$TRIGGER_URL"
+    curl -s -S -H "Content-Type: application/json" --data '{"build": true}' -X POST "$TRIGGER_URL"
 fi
