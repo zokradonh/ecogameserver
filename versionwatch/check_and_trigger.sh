@@ -47,5 +47,5 @@ then
     echo "$latestVersion" > /versionwatch/state/latest
     echo "Found new version ($latestVersion), triggering new build"
     # trigger build
-    curl -H "Content-Type: application/json" --data '{"build": true}' -X POST "https://registry.hub.docker.com/u/zokradonh/ecogameserver/trigger/$TRIGGER_TOKEN/"
+    curl -H "Content-Type: application/json" --data '{"build": true}' -X POST "$TRIGGER_URL"
 fi
