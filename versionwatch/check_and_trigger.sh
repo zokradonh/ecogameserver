@@ -36,7 +36,12 @@ vercomp () {
 
 latestVersion=$( aws --no-sign-request s3 ls eco-releases | grep -E -e "EcoServer_v[0-9.]*-beta.zip" | sort -n | tail -1 | awk '{print $4}' | sed -r 's#.+_v([0-9.]+).+#\1#' )
 
-lastKnown=$( cat /versionwatch/state/latest )
+if [[ -f /versionwatch/state/latest ]]
+then
+    lastKnown=$( cat /versionwatch/state/latest )
+else
+    lastKnown="0"
+fi
 
 vercomp "$latestVersion" "$lastKnown"
 
@@ -47,5 +52,5 @@ then
     echo "$latestVersion" > /versionwatch/state/latest
     echo "Found new version ($latestVersion), triggering new build"
     # trigger build
-    curl -H "Content-Type: application/json" --data '{"build": true}' -X POST "https://registry.hub.docker.com/u/zokradonh/ecogameserver/trigger/$TRIGGER_TOKEN/"
+    curl -H "Content-Type: application/json" --data '{"build": true}' -X POST "$TRIGGER_URL"
 fi
