@@ -1,0 +1,11 @@
+#!/bin/bash
+
+VERSION=$( docker run --rm xueshanf/awscli /bin/bash -c "aws --no-sign-request s3 ls eco-releases | grep -E -e EcoServer_v[0-9.]*-beta.zip | sort -n | tail -1 | awk '{print \$4}' | sed 's/EcoServer_v\\([0-9.]*-beta\\).zip/\\1/'" )
+
+docker build \
+    --build-arg BUILD_VERSION="$VERSION" \
+    --build-arg VCS_REF="$GIT_SHA1" \
+    --build-arg BUILD_DATE="$(date --rfc-3339 ns)" \
+    -f "$DOCKERFILE_PATH" \
+    -t "$IMAGE_NAME" \
+    -t "$DOCKER_REPO:$VERSION" .

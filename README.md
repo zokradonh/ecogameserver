@@ -57,7 +57,7 @@ version: '3'
 services:
 
   server:
-    build: https://github.com/ZokRadonh/ecogameserver.git
+    build: https://github.com/zokradonh/ecogameserver.git
     stop_grace_period: 20s
     ports:
       - 3000:3000/udp
