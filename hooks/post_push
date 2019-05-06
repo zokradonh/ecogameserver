@@ -1,8 +1,0 @@
-#!/bin/bash
-
-# push all tags that were created during build
-for i in $( docker images "$DOCKER_REPO" --format '{{.Repository}}:{{.Tag}}' | grep -v latest )
-do
-    echo "Push tag $i"
-    docker push "$i"
-done

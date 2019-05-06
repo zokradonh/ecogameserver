@@ -9,3 +9,5 @@ docker build \
     -f "$DOCKERFILE_PATH" \
     -t "$IMAGE_NAME" \
     -t "$DOCKER_REPO:$VERSION" .
+
+docker push "$DOCKER_REPO:$VERSION"
