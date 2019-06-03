@@ -1,10 +1,11 @@
 [![Docker Pulls](https://img.shields.io/docker/pulls/zokradonh/ecogameserver.svg)](https://hub.docker.com/r/zokradonh/ecogameserver/)
+[![](https://images.microbadger.com/badges/version/zokradonh/ecogameserver.svg)](https://microbadger.com/images/zokradonh/ecogameserver "Get your own version badge on microbadger.com")
 
 Docker ECO Game Server
 =============
 
 A docker image for the ECO game. (http://www.strangeloopgames.com/eco/)
-You need an ECO license to run an ECO server. Your normal client license is enough.
+According to ECO EULA you need to own a client ECO license to run an ECO server.
 
 Features
 ===========
