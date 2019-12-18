@@ -1,5 +1,5 @@
 ARG BUILD_VERSION=custom
-ARG MONO_VERSION=latest
+ARG MONO_VERSION=6.0
 
 FROM xueshanf/awscli AS awshelper
 ARG BUILD_VERSION
