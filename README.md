@@ -1,6 +1,9 @@
 [![Docker Pulls](https://img.shields.io/docker/pulls/zokradonh/ecogameserver.svg)](https://hub.docker.com/r/zokradonh/ecogameserver/)
 [![](https://images.microbadger.com/badges/version/zokradonh/ecogameserver.svg)](https://microbadger.com/images/zokradonh/ecogameserver "Get your own version badge on microbadger.com")
 
+### Deprecated. Please use official image strangeloopgames/eco-game-server. Just replace `zokradonh/ecogameserver` with `strangeloopgames/eco-game-server`
+Check https://hub.docker.com/r/strangeloopgames/eco-game-server/tags for the latest tags.
+
 Docker ECO Game Server
 =============
 
